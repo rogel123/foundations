@@ -2,14 +2,35 @@
 
 > Deployment service for troy project
 
-## Docker 
+## Localstack
 
-In order to run SQS queues and send messages to the queues you'll require an SQS server which can be emulated using docker. We've added a docker-compose configuration file to make this easier. Use the command below to start the emulator.
+### Install required commands 
 
 ```bash
-$ docker-compose up -d
+$ make
 ```
-> Make sure you have both docker and docker-compose installed on your machine. [Install here](https://docs.docker.com/get-docker/)
+
+### Start localstack
+
+```bash
+$ sh ./scripts/start.sh
+```
+
+### CDK with localstack
+
+#### bootstrap
+
+```bash
+$ yarn rpt-cdk --local bootstrap cdk/cdk.ts
+```
+
+#### Deploying to localstack
+
+```bash
+$ yarn deploy-local
+```
+
+> Under the hood `yarn rpt-cdk deploy --local cdk/cdk.ts`
 
 ## TypeORM
 

@@ -1,3 +1,3 @@
 # /bin/shell
 
-SERVICES=sns,sqs,rds,sts,cloudformation,s3,ssm,iam,apigateway localstack start
+SERVICES=sns,sqs,rds,sts,cloudformation,s3,ssm,secretsmanager,iam,apigateway,ec2,events,lambda localstack start

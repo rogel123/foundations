@@ -1,17 +1,21 @@
 import process from 'process'
 import { execSync } from 'child_process'
 import path from 'path'
+import argv from 'process.argv'
 
-const [command, scriptName = 'cdk-stack.ts'] = process.argv.slice(2)
+const processArgv = argv(process.argv.slice(2))
+const commandsArgs = processArgv<any>({})
+const params = commandsArgs['--']
+const options = commandsArgs
+
+const [command, scriptName = 'cdk-stack.ts'] = params
 const cwd = process.cwd()
 const templatesDir = path.join(cwd, 'cdk.out')
 
-const isLocal = process.argv.includes('-l') || process.argv.includes('--local')
-
-if (isLocal) console.log('Running in dev mode...')
+if (options.local) console.log('Running in dev mode...')
 
 if (command) {
-  const cdkCommand = isLocal ? 'cdklocal' : 'cdk'
+  const cdkCommand = options.local ? 'cdklocal' : 'cdk'
   try {
     execSync(
       `yarn ${cdkCommand} ${command} --require-approval never --output=${templatesDir} -a "cd ${cwd} && yarn dlx ts-node ${scriptName}"`,
@@ -36,5 +40,8 @@ if (command) {
         deploy - Deploy the CDK stack
         watch - Deploy the CDK stack and watch for changes
         destroy - Destroy the CDK stack
+
+      Options:
+        --local - deploy locally using cdklocal command (use with localstack)
   `)
 }

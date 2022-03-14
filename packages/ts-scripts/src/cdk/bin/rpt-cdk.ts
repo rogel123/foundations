@@ -6,10 +6,15 @@ const [command, scriptName = 'cdk-stack.ts'] = process.argv.slice(2)
 const cwd = process.cwd()
 const templatesDir = path.join(cwd, 'cdk.out')
 
+const isLocal = process.argv.includes('-l') || process.argv.includes('--local')
+
+if (isLocal) console.log('Running in dev mode...')
+
 if (command) {
+  const cdkCommand = isLocal ? 'cdklocal' : 'cdk'
   try {
     execSync(
-      `yarn cdk ${command} --require-approval never --output=${templatesDir} -a "cd ${cwd} && yarn dlx ts-node ${scriptName}"`,
+      `yarn ${cdkCommand} ${command} --require-approval never --output=${templatesDir} -a "cd ${cwd} && yarn dlx ts-node ${scriptName}"`,
       {
         stdio: 'inherit',
         cwd: __dirname,

@@ -6820,6 +6820,7 @@ __metadata:
     autoprefixer: ^10.4.0
     aws-cdk: ^2.15.0
     aws-cdk-lib: ^2.15.0
+    aws-cdk-local: ^2.14.0
     babel-jest: ^27.4.6
     babel-loader: ^8.2.3
     babel-plugin-module-resolver: ^4.1.0
@@ -12822,6 +12823,17 @@ __metadata:
   peerDependencies:
     constructs: ^10.0.0
   checksum: b7682979a20efc2c70285230f5997d436120cb8d424290951ccd0fe8a3c3640478b46750c8d46825c9af1d8b4847f782261736076729c0faaa6148800347bbfe
+  languageName: node
+  linkType: hard
+
+"aws-cdk-local@npm:^2.14.0":
+  version: 2.14.0
+  resolution: "aws-cdk-local@npm:2.14.0"
+  dependencies:
+    diff: ^5.0.0
+  bin:
+    cdklocal: bin/cdklocal
+  checksum: 79f955d45d0154dedd5a046ab390c6e842d2dbd7c9c7060b9c5bed774227daae66d098193fac555f4ae3dc624ed81b2f79dec23c71d6727c4c4fc38ab96874fe
   languageName: node
   linkType: hard
 

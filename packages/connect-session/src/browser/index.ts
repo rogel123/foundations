@@ -42,8 +42,8 @@ export class ReapitConnectBrowserSession {
     this.connectOAuthUrl = connectOAuthUrl
     this.connectClientId = connectClientId
     this.connectUserPoolId = connectUserPoolId
-    this.connectLoginRedirectPath = `${window.location.origin}${connectLoginRedirectPath || ''}`
-    this.connectLogoutRedirectPath = `${window.location.origin}${
+    this.connectLoginRedirectPath = `${connectLoginRedirectPath || ''}`
+    this.connectLogoutRedirectPath = `${
       connectLogoutRedirectPath || connectLogoutRedirectPath === '' ? connectLogoutRedirectPath : '/login'
     }`
     this.connectApplicationTimeout = connectApplicationTimeout ?? ReapitConnectBrowserSession.APP_DEFAULT_TIMEOUT
